@@ -1,0 +1,23 @@
+import urllib.request
+import time
+
+i = 1
+
+url_file = open("test.txt","r") # If error, convert links in "file.txt" to http.
+
+for line in url_file:
+  if "jpg" in line:
+    name = str(i) + ".jpg"
+  elif "png" in line:
+    name = str(i) + ".png"
+  elif "gif" in line:
+    name = str(i) + ".gif"
+  else:
+    name = str(i) + ".null"
+  
+  urllib.request.urlretrieve(line, "images/" + name)
+  i += 1
+
+  time.sleep(0.01)
+
+url_file.close()
